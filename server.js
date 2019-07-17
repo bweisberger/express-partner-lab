@@ -16,6 +16,13 @@ app.get('/people', (req, res)=>{
   })
 })
 
+//show Route
+app.get('/people/:index', (req, res)=>{
+  res.render('show.ejs', {
+    person: People[req.params.index]
+  });
+});
+
 //root route
 app.get('/', (req, res)=>{
   res.send(People);
