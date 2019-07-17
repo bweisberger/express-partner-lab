@@ -9,6 +9,9 @@
     <ul class="humans">
       <%for(let i = 0; i < people.length; i++){%>
         <li><%=people[i].name%></li>
+        <form class="delete-person" action="/people?_method=DELETE" method="post">
+          <input type="submit" name="" value="Delete Person">
+        </form>
       <%}%>
     </ul>
 

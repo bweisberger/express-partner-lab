@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit <%=person.name%></title>
+  </head>
+  <body>
+    <h1>Edit <%=person.name%></h1>
+    <form class="change-person" action="/people/<%=index%>?_method=PUT" method="post">
+      Name: <input type="text" name="name" value="<%=person.name%>">
+      Age: <input type="text" name="age" value="<%=person.age%>">
+      Hair Color<input type="text" name="hairColor" value="<%=person.hairColor%>">
+      <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

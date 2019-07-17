@@ -7,25 +7,42 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 
-const People = require('./models/people')
+const People = require('./models/people');
 
 //post Route
 app.post('/people', (req, res)=>{
   People.push(req.body);
-  res.redirect('/people')
-})
+  res.redirect('/people');
+});
 
 //new page on the way to post route
 app.get('/people/new', (req, res)=>{
-  res.render('new.ejs')
+  res.render('new.ejs');
+});
+
+//edit page on the way to update/put route
+app.get('/people/:index/edit', (req, res)=>{
+  res.render('edit.ejs', {
+    person: People[req.params.index],
+    index: req.params.index
+  });
+});
+
+// put Route
+app.put('/people/:index', (req, res)=>{
+  // console.log(req.body, "<----req.body");
+  // console.log(req.params.index, "<----req.params.index")
+  // console.log(People[req.params.index], "<----People[req.params.index]")
+  People[req.params.index] = req.body;
+  res.redirect('/people');
 })
 
 //index route
 app.get('/people', (req, res)=>{
   res.render('index.ejs', {
     people: People
-  })
-})
+  });
+});
 
 //show Route
 app.get('/people/:index', (req, res)=>{
