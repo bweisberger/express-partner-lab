@@ -9,6 +9,17 @@ app.use(methodOverride('_method'));
 
 const People = require('./models/people')
 
+//post Route
+app.post('/people', (req, res)=>{
+  People.push(req.body);
+  res.redirect('/people')
+})
+
+//new page on the way to post route
+app.get('/people/new', (req, res)=>{
+  res.render('new.ejs')
+})
+
 //index route
 app.get('/people', (req, res)=>{
   res.render('index.ejs', {
